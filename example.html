@@ -3,57 +3,84 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Page 1</title>
+<title>validator.js</title>
+<style>
+	h1 {
+		text-align: center;
+	}
+	.container {
+		width: 60%;
+		margin: 0 auto;
+		padding: 20px;
+		border: 1px solid #eee;
+	}
+	input {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+	}
+
+	.form-input {
+		margin-bottom: 20px;
+	}
+</style>
 </head>
 <body>
-<form id="formValidate" action="/" method="post">
-	<div>
-		<label for="validate1">valida vacio</label>
-		<input id="validate1" value=""/>
+	<div class="container">
+		<h1>Validator JS</h1>
+		<form id="formValidate" action="/" method="post">
+			<div class="form-input">
+				<label for="validate1">Validate required</label>
+				<input id="validate1" value=""/>
+			</div>
+		
+			<div class="form-input">
+				<label for="validate2">Validate only numbers</label>
+				<input id="validate2" value="23s12">
+			</div>
+		
+			<div class="form-input">
+				<label for="validate3">Validate only letters and required</label>
+				<input id="validate3" value="sdfsdfssdf5df">
+			</div>
+			<div class="form-input">
+				<label for="validate4">Custom validate only input validator</label>
+				<input id="validate4" value="validator">
+			</div>
+			<button type="submit">submit</button>
+		</form>
 	</div>
 
-	<div>
-		<label for="validate2">valida numeros</label>
-		<input id="validate2" value="23s12">
-	</div>
-
-	<div>
-		<label for="validate3">valida letras</label>
-		<input id="pruebas3" value="sdfsdfssdf5df">
-	</div>
-	<div>
-		<label for="validate4">valida letras</label>
-		<input id="pruebas4" value="validator">
-	</div>
-	<button type="submit">submit</button>
-</form>
-
-<script src="validator.js"></script>
-<script>
-const validator = Validator();
-document.querySelector('#formValidate').addEventListener('submit', function (event) {
-	event.preventDefault();
-	let is_valid = validator({
-		required: {
-			fields: ['#validate1', '#validate2'],
-			messages: ['The field validate1 is required']
-		},
-		number: {
-			fields: ['#validate3']
-		},
-		validStrnig: {
-			fn: function(value) {
-				return value == 'validator' ? true : false;
+	<script src="validator.js"></script>
+	<script>
+	const validator = Validator();
+	document.querySelector('#formValidate').addEventListener('submit', function (event) {
+		event.preventDefault();
+		let is_valid = validator({
+			required: {
+				fields: ['#validate1', '#validate3'],
+				messages: ['The field validate1 is required']
 			},
-			fields: ['#validate4'],
-			messages: ['This field only validate word']
+			letters: {
+				fields: ['#validate3']
+			},
+			number: {
+				fields: ['#validate2']
+			},
+			validStrnig: {
+				fn: function(value) {
+					return value == 'validator' ? true : false;
+				},
+				fields: ['#validate4'],
+				messages: ['This field only validate word']
+			}
+		});
+		if (is_valid) {
+			this.submit();
 		}
-	});
-	if (is_valid) {
-		this.submit();
-	}
-})
+	})
 
-</script>
+	</script>
 </body>
 </html>
