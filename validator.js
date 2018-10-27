@@ -1,12 +1,13 @@
 (function(){
-	let countErrors = 0;
+	let countErrors = 0,
+		css = 'font-size: 15px;color: red;margin-top: 5px;display: block';
 	const _validators = {},
 		arrayReturn = [],
 		defaultMessage = {
-			required: 'This field is required',
-			number: 'This field accept only numbers',
-			letters: 'This field accept only letters',
-			_default: 'Exists one error in this field'
+			required: 'This field is required.',
+			number: 'This field accept only numbers.',
+			letters: 'This field accept only letters.',
+			_default: 'Exists one error in this field.'
 		};
 	
 	_validators.required = function(object) {
@@ -52,6 +53,7 @@
 		const _el = document.createElement(el);
 		_el.className = '_validate_forms_';
 		_el.textContent = message;
+		_el.style.cssText = css;
 		return _el;
 	}
 	
