@@ -45,8 +45,12 @@
 				<input id="validate3" value="sdfsdfssdf5df">
 			</div>
 			<div class="form-input">
-				<label for="validate4">Custom validate only input validator</label>
-				<input id="validate4" value="validator">
+					<label for="validate4">Validate email</label>
+					<input id="validate4" value="validator">
+				</div>
+			<div class="form-input">
+				<label for="validate5">Custom validate only input validator</label>
+				<input id="validate5" value="validator">
 			</div>
 			<button type="submit">submit</button>
 		</form>
@@ -59,7 +63,7 @@
 		event.preventDefault();
 		let is_valid = validator({
 			required: {
-				fields: ['#validate1', '#validate3'],
+				fields: ['#validate1', '#validate3', '#validate4'],
 				messages: ['The field validate1 is required']
 			},
 			letters: {
@@ -68,11 +72,14 @@
 			number: {
 				fields: ['#validate2']
 			},
+			email: {
+				fields: ['#validate4']
+			},
 			validStrnig: {
 				fn: function(value) {
 					return value == 'validator' ? true : false;
 				},
-				fields: ['#validate4'],
+				fields: ['#validate5'],
 				messages: ['This field only validate word']
 			}
 		});
