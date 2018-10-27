@@ -1,0 +1,17 @@
+{
+  "name": "validator",
+  "version": "1.0.0",
+  "description": "Validator for forms",
+  "main": "validator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "validator",
+    "forms"
+  ],
+  "author": {
+    "name": "David Chinchin"
+  },
+  "license": "ISC"
+}
