@@ -1,4 +1,4 @@
 validator.js
 
-*Validate input with this api*
+* Validate forms input with this api*
 ***
